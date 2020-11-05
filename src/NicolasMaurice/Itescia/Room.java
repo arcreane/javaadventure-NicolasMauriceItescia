@@ -28,7 +28,6 @@ public class Room {
         }
         else {
 
-            Main.roomsCleared+=1;
             System.out.println("You have cleared "+Main.roomsCleared+" rooms");
         }
 
