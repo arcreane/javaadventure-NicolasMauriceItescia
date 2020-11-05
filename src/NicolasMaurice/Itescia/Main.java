@@ -1,7 +1,8 @@
 package NicolasMaurice.Itescia;
 
-import NicolasMaurice.Itescia.Characters.Character;
-import NicolasMaurice.Itescia.Characters.Wizard;
+
+
+import java.util.Scanner;
 
 public class Main {
     public static int roomsCleared = 0;
@@ -11,5 +12,17 @@ public class Main {
             Room myRoom = new Room();
         }
 
+    }
+
+    public boolean getPlayerInput(String expectedString){
+        Scanner sc = new Scanner(System.in);
+        String userWord = sc.nextLine();
+        if (userWord==expectedString){
+            return true;
+        }
+        else{
+            System.out.println("Incorrect input");
+            return false;
+        }
     }
 }
