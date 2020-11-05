@@ -10,23 +10,29 @@ import NicolasMaurice.Itescia.Weapons.Weapon;
 public class Room {
 
     public Room(){
+        Character i_monster;
+
+        int monsterType = (int) (Math.random() * 2);
+
+        if (monsterType == 0) {
+            i_monster = new Wizard();
+        } else {
+            i_monster = new Barbarian();
+        }
+
         if (Main.roomsCleared == 5){
             System.out.println("You have defeated the Dungeon!");
             System.exit(0);
         }
         else {
-            Character i_monster;
 
-            int monsterType = (int) (Math.random() * 2);
-
-            if (monsterType == 0) {
-                i_monster = new Wizard();
-            } else {
-                i_monster = new Barbarian();
-            }
-            System.out.println(i_monster.name);
             Main.roomsCleared+=1;
             System.out.println("You have cleared "+Main.roomsCleared+" rooms");
         }
+
+
+
+
+
     }
 }

@@ -1,5 +1,9 @@
 package NicolasMaurice.Itescia.Characters;
 
+import NicolasMaurice.Itescia.Weapons.Axe;
+import NicolasMaurice.Itescia.Weapons.Water_Flask;
+import NicolasMaurice.Itescia.Weapons.Weapon;
+
 public class Barbarian extends Character {
 
     public Barbarian(){
@@ -9,7 +13,7 @@ public class Barbarian extends Character {
         eventChance = 30;
         event = "Critical Strike";
         name = new String("Barbarian");
-        effectiveWeapon = "Axe";
+        Weapon effectiveWeapon = new Axe();
     }
 
 

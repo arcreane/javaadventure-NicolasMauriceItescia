@@ -1,5 +1,9 @@
 package NicolasMaurice.Itescia.Characters;
 
+import NicolasMaurice.Itescia.Weapons.Axe;
+import NicolasMaurice.Itescia.Weapons.Water_Flask;
+import NicolasMaurice.Itescia.Weapons.Weapon;
+
 public class Wizard extends Character {
 
     public Wizard(){
@@ -9,7 +13,7 @@ public class Wizard extends Character {
          eventChance = 20;
          event = "Paralysis";
          name = new String("Wizard");
-         effectiveWeapon = "Water_Flask";
+         effectiveWeapon = new Water_Flask();
     }
 
 
