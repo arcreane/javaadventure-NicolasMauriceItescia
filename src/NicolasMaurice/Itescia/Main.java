@@ -1,13 +1,7 @@
 package NicolasMaurice.Itescia;
 
-
-
-import NicolasMaurice.Itescia.Characters.Barbarian;
 import NicolasMaurice.Itescia.Characters.Hero;
 import NicolasMaurice.Itescia.Characters.Character;
-import NicolasMaurice.Itescia.Weapons.Sword;
-import NicolasMaurice.Itescia.Weapons.Weapon;
-import NicolasMaurice.Itescia.Room;
 
 
 import java.util.Scanner;
@@ -20,10 +14,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        while (roomsCleared<=10){
+        while (roomsCleared<=5){
             Room myRoom = new Room();
             fight(myRoom.i_monster,hero);
-            Main.roomsCleared+=1;
 
         }
 
@@ -46,19 +39,20 @@ public class Main {
                 if (monster.effectiveWeapon.eventChance>= eventRoll){
                     monster.effectiveWeapon.eventEffect();
                 }
+                if(!stunStatus) {
+                    monster.effectiveWeapon.dealDamage(monster.effectiveWeapon, monster);
+                    monster.dealDamage(monster, hero);
+                }
                 if (stunStatus){
                     if(monster.effectiveWeapon.weaponName.equals("Sword")){
-                        System.out.println(monster.effectiveWeapon.eventDescription);
                         monster.effectiveWeapon.dealDamage(monster.effectiveWeapon,monster);
                     }
                     if(monster.effectiveWeapon.weaponName.equals("Water_Flask")){
-                        System.out.println(monster.event);
                         monster.dealDamage(monster,hero);
                     }
                 }
 
-                monster.effectiveWeapon.dealDamage(monster.effectiveWeapon,monster);
-                monster.dealDamage(monster,hero);
+
 
             }
             if (!checkInput) {
@@ -72,21 +66,50 @@ public class Main {
                 monster.damage = 15;
             }
             //souts à polish
-            System.out.println(hero.hitPoints);
-            System.out.println(monster.hitPoints);
+
+            if(monster.hitPoints<=0){
+                Main.roomsCleared+=1;
+                System.out.println("The monster has been defeated, you may proceed to the next room.");
+                break;
+            }
+            if(hero.hitPoints<=0){
+                System.out.println("You are dead. The game is now over.");
+                endGame();
+                break;
+            }
         }
+
     }
 
     public static boolean getPlayerInput(String expectedString){
         Scanner sc = new Scanner(System.in);
         String userWord = sc.nextLine();
         if (userWord.equals(expectedString)){
-            System.out.println("Correct Input");
+            //System.out.println("Your attack lands!");
             return true;
         }
         else{
-            System.out.println("Incorrect input");
+            System.out.println("You've fumbled your attack, and are now opened and exposed. Brace for impact !");
             return false;
+        }
+    }
+
+    public static void endGame(){
+        System.out.println("Do you wanna play again ?");
+        System.out.println("press c to continue playing, or q to quit");
+        Scanner sc = new Scanner(System.in);
+        String userWord = sc.nextLine();
+        if (userWord.equals("q")){
+            System.out.println("Thank you for playing !");
+            System.exit(0);
+        }
+        if (userWord.equals("c")){
+            System.out.println("Let's go again");
+            roomsCleared=0;
+            hero.hitPoints=200;
+        }
+        else{
+            System.out.println("Invalid entry, try again");
         }
     }
 }

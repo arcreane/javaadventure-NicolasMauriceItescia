@@ -10,7 +10,7 @@ public abstract  class Weapon {
     public abstract void eventEffect();
 
     public void dealDamage(Weapon i_weaponType, Character i_monster){
-
         i_monster.hitPoints-=i_weaponType.damage;
+        System.out.println("Your attack lands, dealing "+i_weaponType.damage+" damage to the "+i_monster.name+", leaving it with "+i_monster.hitPoints+" HP left.");
     }
 }

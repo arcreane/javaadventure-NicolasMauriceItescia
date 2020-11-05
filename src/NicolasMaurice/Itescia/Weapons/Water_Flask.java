@@ -2,7 +2,7 @@ package NicolasMaurice.Itescia.Weapons;
 
 public class Water_Flask extends Weapon {
 
-    int damageStacks[]={0};
+    int damageStacks=0;
 
     public Water_Flask(){
         damage = 10;
@@ -14,8 +14,10 @@ public class Water_Flask extends Weapon {
 
     @Override
     public void eventEffect() {
-        System.out.println(eventDescription);
-        damage+=(damageStacks[0]*2);
-        damageStacks[0]+=1;
+        if (damageStacks>0){
+            System.out.println(eventDescription);
+        }
+        damageStacks+=1;
+        damage+=(damageStacks*2);
     }
 }
