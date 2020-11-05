@@ -16,35 +16,34 @@ public class Main {
     public static void main(String[] args) {
         Character hero = new Hero();
         while (roomsCleared<=5){
-            
-
+            Room myRoom = new Room();
+            fight(myRoom.i_monster,hero);
         }
 
     }
 
-    public void roomGeneration(){
-        Room myNewRoom = new Room();
+    public static void fight(Character monster, Character hero){
+        while (monster.hitPoints[0]>0&&hero.hitPoints[0]>0) {
+            boolean check;
+            System.out.println("to fight the monster, type " + monster.effectiveWeapon.weaponName);
+            check = getPlayerInput(monster.effectiveWeapon.weaponName);
+            if (check) {
+                hero.hitPoints[0] -= monster.damage;
+                monster.hitPoints[0] -= monster.effectiveWeapon.damage;
+            }
+            if (!check) {
+                hero.hitPoints[0] -= monster.damage;
+            }
+            System.out.println(hero.hitPoints[0]);
+            System.out.println(monster.hitPoints[0]);
+        }
     }
 
-    public void fight(Character monster, Character hero){
-
-        getPlayerInput(monster.effectiveWeapon.weaponName);
-        if (true){
-            hero.hitPoints[0]-= monster.damage;
-            monster.hitPoints[0]-=monster.effectiveWeapon.damage;
-        }
-        if (false){
-            hero.hitPoints[0]-= monster.damage;
-        }
-        System.out.println(hero.hitPoints);
-        System.out.println(monster.hitPoints);
-
-    }
-
-    public boolean getPlayerInput(String expectedString){
+    public static boolean getPlayerInput(String expectedString){
         Scanner sc = new Scanner(System.in);
         String userWord = sc.nextLine();
-        if (userWord==expectedString){
+        if (userWord.equals(expectedString)){
+            System.out.println("Correct Input");
             return true;
         }
         else{

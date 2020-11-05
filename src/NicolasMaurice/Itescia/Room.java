@@ -9,8 +9,10 @@ import NicolasMaurice.Itescia.Weapons.Weapon;
 
 public class Room {
 
+    public Character i_monster;
+
     public Room(){
-        Character i_monster;
+        //Character i_monster;
 
         int monsterType = (int) (Math.random() * 2);
 
