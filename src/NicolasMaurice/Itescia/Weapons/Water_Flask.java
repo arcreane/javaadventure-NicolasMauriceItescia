@@ -17,7 +17,7 @@ public class Water_Flask extends Weapon {
         if (damageStacks>0){
             System.out.println(eventDescription);
         }
-        damageStacks+=1;
         damage+=(damageStacks*2);
+        damageStacks+=1;
     }
 }

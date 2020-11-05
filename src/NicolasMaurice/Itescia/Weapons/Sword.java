@@ -1,6 +1,5 @@
 package NicolasMaurice.Itescia.Weapons;
 
-import NicolasMaurice.Itescia.Characters.Barbarian;
 import NicolasMaurice.Itescia.Main;
 
 public class Sword extends Weapon{

@@ -17,7 +17,6 @@ public class Main {
         while (roomsCleared<=5){
             Room myRoom = new Room();
             fight(myRoom.i_monster,hero);
-
         }
 
     }
@@ -25,8 +24,7 @@ public class Main {
     public static void fight(Character monster, Character hero){
 
         while (monster.hitPoints>0&&hero.hitPoints>0) {
-            int tempPlayerLife = hero.hitPoints;
-            int tempMonsterLife = monster.hitPoints;
+
             boolean checkInput;
             System.out.println("to fight the monster, type " + monster.effectiveWeapon.weaponName);
             checkInput = getPlayerInput(monster.effectiveWeapon.weaponName);
@@ -40,8 +38,8 @@ public class Main {
                     monster.effectiveWeapon.eventEffect();
                 }
                 if(!stunStatus) {
-                    monster.effectiveWeapon.dealDamage(monster.effectiveWeapon, monster);
                     monster.dealDamage(monster, hero);
+                    monster.effectiveWeapon.dealDamage(monster.effectiveWeapon, monster);
                 }
                 if (stunStatus){
                     if(monster.effectiveWeapon.weaponName.equals("Sword")){
@@ -65,11 +63,14 @@ public class Main {
             if(monster.effectiveWeapon.weaponName.equals("Sword")){
                 monster.damage = 15;
             }
-            //souts à polish
 
             if(monster.hitPoints<=0){
                 Main.roomsCleared+=1;
                 System.out.println("The monster has been defeated, you may proceed to the next room.");
+                if (roomsCleared>=5){
+                    System.out.println("Congratulations "+ hero.name+"! You have vanquished the dungeon !");
+                    endGame();
+                }
                 break;
             }
             if(hero.hitPoints<=0){
@@ -85,7 +86,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String userWord = sc.nextLine();
         if (userWord.equals(expectedString)){
-            //System.out.println("Your attack lands!");
             return true;
         }
         else{

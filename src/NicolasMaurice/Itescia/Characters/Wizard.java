@@ -13,7 +13,7 @@ public class Wizard extends Character {
          event = "You have been paralyzed by the wizard, you cannot move this turn! Yikes!";
          name = "Wizard";
          effectiveWeapon = new Water_Flask();
-         attackLine = "The Wizards shoots a lightning bolt your way with his staff! Zap!";
+         attackLine = "The Wizard shoots a lightning bolt your way with his staff! Zap!";
     }
     @Override
     public void eventEffect() {

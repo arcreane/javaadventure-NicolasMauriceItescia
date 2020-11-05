@@ -3,8 +3,6 @@ package NicolasMaurice.Itescia;
 import NicolasMaurice.Itescia.Characters.Barbarian;
 import NicolasMaurice.Itescia.Characters.Character;
 import NicolasMaurice.Itescia.Characters.Wizard;
-import NicolasMaurice.Itescia.Weapons.Water_Flask;
-import NicolasMaurice.Itescia.Weapons.Weapon;
 
 
 public class Room {
@@ -12,7 +10,6 @@ public class Room {
     public Character i_monster;
 
     public Room(){
-        //Character i_monster;
 
         int monsterType = (int) (Math.random() * 2);
 
@@ -21,14 +18,11 @@ public class Room {
         } else {
             i_monster = new Barbarian();
         }
+        System.out.println("You have cleared "+Main.roomsCleared+" rooms");
+        System.out.println("You enter a new room, and encounter a fierce "+i_monster.name);
 
         if (Main.roomsCleared == 5){
-            System.out.println("You have defeated the Dungeon!");
-            System.exit(0);
-        }
-        else {
-
-            System.out.println("You have cleared "+Main.roomsCleared+" rooms");
+            Main.endGame();
         }
 
 
