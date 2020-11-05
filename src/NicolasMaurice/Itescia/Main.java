@@ -2,6 +2,7 @@ package NicolasMaurice.Itescia;
 
 
 
+import NicolasMaurice.Itescia.Characters.Barbarian;
 import NicolasMaurice.Itescia.Characters.Hero;
 import NicolasMaurice.Itescia.Characters.Character;
 import NicolasMaurice.Itescia.Weapons.Sword;
@@ -61,7 +62,14 @@ public class Main {
 
             }
             if (!checkInput) {
+                int monsterEventRoll = (int) (Math.random() * 100);
+                if (monster.eventChance>=monsterEventRoll){
+                    monster.eventEffect();
+                }
                 monster.dealDamage(monster,hero);
+            }
+            if(monster.effectiveWeapon.weaponName.equals("Sword")){
+                monster.damage = 15;
             }
             //souts à polish
             System.out.println(hero.hitPoints);
