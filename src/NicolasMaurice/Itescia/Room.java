@@ -3,6 +3,8 @@ package NicolasMaurice.Itescia;
 import NicolasMaurice.Itescia.Characters.Barbarian;
 import NicolasMaurice.Itescia.Characters.Character;
 import NicolasMaurice.Itescia.Characters.Wizard;
+import NicolasMaurice.Itescia.Weapons.Water_Flask;
+import NicolasMaurice.Itescia.Weapons.Weapon;
 
 
 public class Room {
@@ -14,6 +16,7 @@ public class Room {
         }
         else {
             Character i_monster;
+
             int monsterType = (int) (Math.random() * 2);
 
             if (monsterType == 0) {

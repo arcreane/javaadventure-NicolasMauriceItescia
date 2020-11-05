@@ -6,5 +6,6 @@ public class Character {
     public int eventChance;
     public String event;
     public String name;
+    public String effectiveWeapon;
 
 }

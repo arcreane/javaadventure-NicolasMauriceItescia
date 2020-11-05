@@ -2,6 +2,8 @@ package NicolasMaurice.Itescia;
 
 
 
+import NicolasMaurice.Itescia.Weapons.Weapon;
+
 import java.util.Scanner;
 
 public class Main {

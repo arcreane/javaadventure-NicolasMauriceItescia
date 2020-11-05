@@ -9,6 +9,7 @@ public class Wizard extends Character {
          eventChance = 20;
          event = "Paralysis";
          name = new String("Wizard");
+         effectiveWeapon = "Water_Flask";
     }
 
 

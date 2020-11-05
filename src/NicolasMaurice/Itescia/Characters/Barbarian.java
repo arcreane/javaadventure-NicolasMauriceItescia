@@ -9,5 +9,8 @@ public class Barbarian extends Character {
         eventChance = 30;
         event = "Critical Strike";
         name = new String("Barbarian");
+        effectiveWeapon = "Axe";
     }
+
+
 }
