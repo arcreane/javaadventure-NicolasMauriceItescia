@@ -7,18 +7,24 @@ import NicolasMaurice.Itescia.Characters.Character;
 import java.util.Scanner;
 
 public class Main {
-    public static int roomsCleared = 0;
+    public static int roomsCleared;
     public static boolean stunStatus;
-
-    public static Character hero = new Hero();
+    public static Character hero;
 
     public static void main(String[] args) {
 
+        startGame();
+
+    }
+
+    public static void startGame(){
+        hero = new Hero();
+        roomsCleared = 0;
+        stunStatus = false;
         while (roomsCleared<=5){
             Room myRoom = new Room();
             fight(myRoom.i_monster,hero);
         }
-
     }
 
     public static void fight(Character monster, Character hero){
@@ -105,8 +111,7 @@ public class Main {
         }
         if (userWord.equals("c")){
             System.out.println("Let's go again");
-            roomsCleared=0;
-            hero.hitPoints=200;
+            startGame();
         }
         else{
             System.out.println("Invalid entry, try again");
