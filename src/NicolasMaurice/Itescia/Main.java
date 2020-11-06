@@ -2,6 +2,7 @@ package NicolasMaurice.Itescia;
 
 import NicolasMaurice.Itescia.Characters.Hero;
 import NicolasMaurice.Itescia.Characters.Character;
+import NicolasMaurice.Itescia.Weapons.Weapon;
 
 
 import java.util.Scanner;
@@ -35,15 +36,20 @@ public class Main {
     //This method runs the game by creating new rooms and calling the fight method
 
     public static void fight(Character monster, Character hero){
-        //biggest method in the project, brace yourselves
+        //Biggest method in the project, brace yourselves
+        Weapon weapon = monster.effectiveWeapon;
+        String weaponName = monster.effectiveWeapon.weaponName;
+        //The weapon is instantiated on the monster, more details in Character class
+        //These Strings are used a lot in the method, so we shorten them to make it clearer,
+        //especially because they reference the monster, making the code confusing to read.
         while (monster.hitPoints>0&&hero.hitPoints>0) {
             //We keep fighting until one of the character dies !
             boolean checkInput;
             //No chainstun allowed here
             stunStatus = false;
 
-            System.out.println("to fight the monster, type " + monster.effectiveWeapon.weaponName);
-            checkInput = getPlayerInput(monster.effectiveWeapon.weaponName);
+            System.out.println("to fight the monster, type " + weaponName);
+            checkInput = getPlayerInput(weaponName);
             //We use the getInput method to check if the player writes the correct weapon
             if (checkInput) {
                 int monsterEventRoll = (int) (Math.random() * 100);
@@ -51,20 +57,20 @@ public class Main {
                     monster.eventEffect();
                 }
                 int eventRoll = (int) (Math.random() * 100);
-                if (monster.effectiveWeapon.eventChance>= eventRoll){
-                    monster.effectiveWeapon.eventEffect();
+                if (weapon.eventChance>= eventRoll){
+                    weapon.eventEffect();
                 }
                 //We start by checking if player or monster event occurs, and apply it accordingly using the override methods
                 if(!stunStatus) {
                     monster.dealDamage(monster, hero);
-                    monster.effectiveWeapon.dealDamage(monster.effectiveWeapon, monster);
+                    weapon.dealDamage(weapon, monster);
                 }
                 if (stunStatus){
                     //This is important because both the wizard and the sword can stun the opponent, making it unable to move
-                    if(monster.effectiveWeapon.weaponName.equals("Sword")){
-                        monster.effectiveWeapon.dealDamage(monster.effectiveWeapon,monster);
+                    if(weaponName.equals("Sword")){
+                        weapon.dealDamage(weapon,monster);
                     }
-                    if(monster.effectiveWeapon.weaponName.equals("Water_Flask")){
+                    if(weaponName.equals("Water_Flask")){
                         monster.dealDamage(monster,hero);
                     }
                 }
@@ -80,9 +86,9 @@ public class Main {
             }
 
 
-            if(monster.effectiveWeapon.weaponName.equals("Sword")){
+            if(weaponName.equals("Sword")){
                 monster.damage = 15;
-                //We reset the Barbarian damage between all rounds
+                //We reset the Barbarian damage between all rounds since the critical strike doubles it.
             }
 
             if(monster.hitPoints<=0){
@@ -101,7 +107,7 @@ public class Main {
                 break;
             }
 
-            //We check if a room is over and if the game is over and call the endgame appropriately
+            //We check if a room is over, and if the game is over, we call the endgame appropriately
         }
 
     }

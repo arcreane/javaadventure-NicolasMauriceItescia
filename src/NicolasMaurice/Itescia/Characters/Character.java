@@ -3,7 +3,7 @@ package NicolasMaurice.Itescia.Characters;
 import NicolasMaurice.Itescia.Weapons.Weapon;
 
 public abstract class Character {
-    //Generic Character class, used to build the Hero, Wizard and Barbarian using a lot of similar variables
+    //Generic Character class, used to build the Hero, Wizard and Barbarian using a lot of shared variables
     public int hitPoints;
     public int damage;
     public int eventChance;
