@@ -48,8 +48,8 @@ public class Main {
         while (monster.hitPoints>0&&hero.hitPoints>0) {
             //We keep fighting until one of the character dies !
             boolean checkInput;
-            //No chainstun allowed here
             stunStatus = false;
+            //No chainstun allowed here
 
             System.out.println("To fight the monster, type " + weaponName);
             checkInput = getPlayerInput(weaponName);
