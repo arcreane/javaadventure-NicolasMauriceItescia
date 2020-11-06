@@ -16,6 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         startGame();
+        endGame();
     }
 
     public static void startGame(){
@@ -31,14 +32,14 @@ public class Main {
 
 
     public static void runGame(int nbOfRooms){
-        while (roomsCleared<=nbOfRooms){
+        while (roomsCleared<nbOfRooms&&hero.hitPoints>0){
             Room myRoom = new Room();
-            fight(myRoom.i_monster,hero);
+            fight(myRoom.i_monster,hero, nbOfRooms);
         }
     }
     //This method runs the game by creating new rooms and calling the fight method
 
-    public static void fight(Character monster, Character hero){
+    public static void fight(Character monster, Character hero, int nbOfRooms){
         //Biggest method in the project, brace yourselves
         Weapon weapon = monster.effectiveWeapon;
         String weaponName = monster.effectiveWeapon.weaponName;
@@ -67,6 +68,7 @@ public class Main {
                 if(!stunStatus) {
                     monster.dealDamage(monster, hero);
                     weapon.dealDamage(weapon, monster);
+                    //If all is normal, the characters hit each other using the dealDamage method
                 }
                 if (stunStatus){
                     //This is important because both the wizard and the sword can stun the opponent, making it unable to move
@@ -97,20 +99,19 @@ public class Main {
             if(monster.hitPoints<=0){
                 Main.roomsCleared+=1;
                 System.out.println("The monster has been defeated, you may proceed to the next room.");
-                if (roomsCleared>=5){
+                if (roomsCleared>=nbOfRooms){
                     System.out.println("Congratulations "+ hero.name+"! You have vanquished the dungeon !");
-                    endGame();
+                    break;
                 }
                 break;
             }
 
             if(hero.hitPoints<=0){
                 System.out.println("You are dead. The game is now over.");
-                endGame();
                 break;
             }
 
-            //We check if a room is over, and if the game is over, we call the endgame appropriately
+            //We check if a room is over, and if the game is over, we get out of the loop if necessary
         }
 
     }
