@@ -5,6 +5,7 @@ import NicolasMaurice.Itescia.Characters.Character;
 import NicolasMaurice.Itescia.Weapons.Weapon;
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +16,6 @@ public class Main {
 
     public static void main(String[] args) {
         startGame();
-        runGame(5);
     }
 
     public static void startGame(){
@@ -23,6 +23,9 @@ public class Main {
         roomsCleared = 0;
         stunStatus = false;
         System.out.println("Welcome to the dungeon "+hero.name);
+        Scanner sc = new Scanner(System.in);
+        int rooms = inputInt("Please choose how many rooms you wish to go through",sc);
+        runGame(rooms);
     }
     //This method starts the game & sets or re-sets all the static variables
 
@@ -124,6 +127,17 @@ public class Main {
         }
     }
     //Method to check user input
+    public static int inputInt(String prompt, Scanner keyboard) {
+        System.out.print(prompt);
+        try{
+            return keyboard.nextInt();
+        } catch (InputMismatchException e){
+            System.out.println("Input Mismatch! Please enter a positive number");
+            keyboard.next();
+            return inputInt(prompt, keyboard);
+        }
+    }
+    //check user input for ints
 
     public static void endGame(){
         System.out.println("Do you wanna play again ?");
