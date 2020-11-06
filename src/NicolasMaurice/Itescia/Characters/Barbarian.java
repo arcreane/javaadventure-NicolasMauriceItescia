@@ -11,8 +11,10 @@ public class Barbarian extends Character {
         event = "The Barbarian lands a vicious hit against you, that's a lot of damage!";
         name = "Barbarian";
         effectiveWeapon = new Sword();
+        //As explained in Hero class, the weapon is instantiated here
         attackLine = "The Barbarian whoops you with his axe! K-Pow!";
     }
+    //Giving specific values to the Barbarian
 
 
     @Override
@@ -20,7 +22,7 @@ public class Barbarian extends Character {
         System.out.println(event);
         damage*=2;
     }
-
+    //This is the critical strike effect
 
 
 }

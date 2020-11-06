@@ -21,13 +21,6 @@ public class Room {
         System.out.println("You have cleared "+Main.roomsCleared+" rooms");
         System.out.println("You enter a new room, and encounter a fierce "+i_monster.name);
 
-        if (Main.roomsCleared == 5){
-            Main.endGame();
-        }
-
-
-
-
-
+        //The room instantiates a random monster, and does some flavor text
     }
 }

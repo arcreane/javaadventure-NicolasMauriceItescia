@@ -13,4 +13,6 @@ public abstract  class Weapon {
         i_monster.hitPoints-=i_weaponType.damage;
         System.out.println("Your attack lands, dealing "+i_weaponType.damage+" damage to the "+i_monster.name+", leaving it with "+i_monster.hitPoints+" HP left.");
     }
+
+    //Weapon parent class, very similar to the Character's in its logic
 }
