@@ -48,7 +48,7 @@ public class Main {
             //No chainstun allowed here
             stunStatus = false;
 
-            System.out.println("to fight the monster, type " + weaponName);
+            System.out.println("To fight the monster, type " + weaponName);
             checkInput = getPlayerInput(weaponName);
             //We use the getInput method to check if the player writes the correct weapon
             if (checkInput) {
