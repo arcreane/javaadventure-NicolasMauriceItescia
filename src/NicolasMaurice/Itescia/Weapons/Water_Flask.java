@@ -1,5 +1,7 @@
 package NicolasMaurice.Itescia.Weapons;
 
+import NicolasMaurice.Itescia.Main;
+
 public class Water_Flask extends Weapon {
 
     int damageStacks=0;
@@ -16,12 +18,15 @@ public class Water_Flask extends Weapon {
 
     @Override
     public void eventEffect() {
-        if (damageStacks>0){
-            System.out.println(eventDescription);
-            //We make sure it's "invisible" for the player on the first attack
+        if (!Main.stunStatus) {
+            //Does not apply if player is stunned
+            if (damageStacks > 0) {
+                System.out.println(eventDescription);
+                //We make sure it's "invisible" for the player on the first attack
+            }
+            damage += (damageStacks * 2);
+            damageStacks += 1;
         }
-        damage+=(damageStacks*2);
-        damageStacks+=1;
     }
     //Damage Scaling event on the Flask
     //The flask damage does not need to be reset each room because the weapon is instantiated on the monster instead of the Hero
